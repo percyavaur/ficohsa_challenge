@@ -4,10 +4,10 @@ import { FaStar } from "react-icons/fa";
 const DetailSkeleton = () => {
   return (
     <div>
-      <div className="border border-gray-400 shadow-md rounded-md max-w-xl p-4 relative animate-pulse">
-        <div className="flex flex-row space-x-2">
+      <div className="border border-gray-400 shadow-md rounded-md max-w-xl p-4 relative animate-pulse bg-gray-50">
+        <div className="flex flex-col md:flex-row space-y-2 md:space-x-2">
           {/* Image */}
-          <div className="bg-gray-400 h-80 w-56"></div>
+          <div className="bg-gray-400 h-64 md:h-80 w-56 ml-auto mr-auto"></div>
           <div className="max-w-xs">
             <div className="mb-4">
               {/* Title */}

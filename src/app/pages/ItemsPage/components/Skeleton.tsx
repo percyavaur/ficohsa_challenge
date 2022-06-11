@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 const Skeleton = () => {
   return (
     <div>
-      <div className="border border-gray-400 shadow-md rounded-md max-w-md p-4 relative animate-pulse">
+      <div className="border border-gray-400 shadow-md rounded-md max-w-md p-4 relative animate-pulse bg-gray-50">
         <div className="flex flex-row pb-6 space-x-2">
           <div className="max-w-xs">
             <div className="h-4 bg-gray-400 rounded w-36 mb-1"></div>

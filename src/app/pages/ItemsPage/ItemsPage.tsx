@@ -52,7 +52,7 @@ const ItemsPage = () => {
           {result.map((item: Item, index) => (
             <div
               key={index}
-              className="border border-gray-400 shadow-md rounded-md max-w-md p-4 relative"
+              className="border border-gray-400 shadow-md rounded-md max-w-md p-4 relative bg-gray-50"
             >
               <div className="flex flex-row pb-6 justify-between">
                 <div className="max-w-xs">

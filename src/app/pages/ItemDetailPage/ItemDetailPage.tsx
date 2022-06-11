@@ -32,7 +32,7 @@ const ItemDetailPage = () => {
     >
       <div className="card__h flex justify-center items-center">
         {result ? (
-          <div className="flex mx-auto max-w-2xl flex-col md:flex-row items-center space-y-5 md:space-x-10 border border-gray-400 rounded-lg px-4 py-6 shadow-xl">
+          <div className="flex mx-auto max-w-2xl flex-col md:flex-row items-center space-y-5 md:space-x-10 border border-gray-400 rounded-lg px-4 py-6 shadow-xl bg-gray-50">
             <picture>
               <img
                 className="max-h-72 md:max-h-96"
