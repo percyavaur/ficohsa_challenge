@@ -17,15 +17,17 @@ const SearchPage = () => {
       title="Ficohsa Challenge"
       description="Welcome to ficohsa challenge"
     >
-      <div className="w-screen search__h flex justify-center items-center ">
+      <div className="w-screen search__h flex flex-col justify-center items-center">
+        <h1 className="font-bold text-3xl pb-10 max-w-xs text-center text-blue-400">Search for your favorite anime</h1>
         <form
           onSubmit={(e) => {
             handleSubmit(e);
           }}
         >
           <input
-            type="text"
-            className="border"
+            type="search"
+            autoFocus
+            className="border rounded-md border-gray-400 px-4 py-2"
             placeholder="Search animes"
             value={search}
             onChange={(e) => setSearch(e.target.value)}

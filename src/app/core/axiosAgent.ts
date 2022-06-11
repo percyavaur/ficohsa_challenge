@@ -1,38 +1,48 @@
 import axios, { AxiosResponse } from "axios";
+import { history } from "../..";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || "";
 
 axios.interceptors.request.use((config) => {
-  /* config.headers!["Content-Type"] = "application/json"; */
+  config.headers!["Content-Type"] = "application/json";
   return config;
 });
 
 axios.interceptors.response.use(
   async (response) => {
+    if (response.data.status) handleStatus(response.data.status);
     return response;
   },
   (error: any) => {
     if (!error.response) {
     } else {
-      let { data, status, headers, errors } = error.response!;
-
-      switch (status) {
-        case 401:
-          console.log(401);
-          break;
-        case 403:
-          console.log(403);
-          break;
-        case 404:
-          console.log(404);
-          break;
-        case 500:
-          console.log(500);
-          break;
-      }
+      let { status } = error.response!;
+      handleStatus(status);
     }
   }
 );
+
+const handleStatus = (status: number) => {
+  switch (status) {
+    case 400:
+      console.log(400);
+      history.replace("/400");
+      break;
+    case 401:
+      console.log(401);
+      break;
+    case 403:
+      console.log(403);
+      break;
+    case 404:
+      console.log(404);
+      history.replace("/404");
+      break;
+    case 500:
+      console.log(500);
+      break;
+  }
+};
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 

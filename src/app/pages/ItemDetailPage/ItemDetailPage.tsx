@@ -5,10 +5,12 @@ import { Item } from "../../core/types/item";
 import { SEOLayout } from "../../layout/SEOLayout";
 import animeServices from "../../services/animeServices";
 import "./ItemDetail.css";
+import DetailSkeleton from "./components/DetailSkeleton";
 
 const ItemDetailPage = () => {
   let { id } = useParams();
   const [result, setResult] = useState<Item>();
+  const [loading, setLoading] = useState<boolean>(true);
   const [showMoreSynopsis, setShowMoreSynopsis] = useState<boolean>(false);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const ItemDetailPage = () => {
 
   const getAnimeById = async (id: number) => {
     const result: any = await animeServices.getAnimeById(id);
-    console.log("result.data :>> ", result.data);
+    setLoading(false);
     if (result) setResult(result.data);
   };
 
@@ -30,10 +32,10 @@ const ItemDetailPage = () => {
     >
       <div className="card__h flex justify-center items-center">
         {result ? (
-          <div className="flex mx-auto max-w-2xl flex-col md:flex-row items-center space-x-10 border border-gray-400 rounded-lg px-4 py-6 shadow-xl">
+          <div className="flex mx-auto max-w-2xl flex-col md:flex-row items-center space-y-5 md:space-x-10 border border-gray-400 rounded-lg px-4 py-6 shadow-xl">
             <picture>
               <img
-                className="max-h-96"
+                className="max-h-72 md:max-h-96"
                 src={result.images.jpg.large_image_url}
                 alt={`Poster ${result.title}`}
               />
@@ -59,22 +61,25 @@ const ItemDetailPage = () => {
               </div>
               <ul className="grid grid-cols-2">
                 <li>
-                  <strong>Year:</strong> {result.year}
+                  <strong>Year: </strong>
+                  {result.year}
                 </li>
                 <li>
-                  <strong>Duration:</strong> {result.duration}
+                  <strong>Duration :</strong>
+                  {result.duration}
                 </li>
                 <li>
-                  <strong>Episodes:</strong>
+                  <strong>Episodes: </strong>
                   {result.episodes}
                 </li>
                 <li>
-                  <strong>Rating:</strong> {result.rating}
+                  <strong>Rating: </strong> {result.rating}
                 </li>
               </ul>
             </div>
           </div>
         ) : null}
+        {loading ? <DetailSkeleton /> : null}
       </div>
     </SEOLayout>
   );

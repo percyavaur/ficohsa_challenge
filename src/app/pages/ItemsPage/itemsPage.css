@@ -9,3 +9,7 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 4;
 }
+
+.items__h {
+  height: calc(100vh - 150px);
+}
